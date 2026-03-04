@@ -1,0 +1,57 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <div class="login-header">
+      <div class="logo">EP</div>
+      <h1>EduPortal</h1>
+      <p>Sign in to your account</p>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-box" *ngIf="error">
+        {{ error }}
+    </div>
+
+    <!-- Login Form -->
+    <div class="form-group">
+      <label>Role</label>
+      <select [(ngModel)]="userId" class="form-input">
+        <option value="">Select role first...</option>
+        <option value="stu123">Student</option>
+        <option value="tch456">Teacher</option>
+        <option value="adm789">Admin</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>User ID</label>
+      <input
+        type="text"
+        [(ngModel)]="userId"
+        class="form-input"
+        placeholder="Enter your user ID">
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        class="form-input"
+        placeholder="Enter your password"
+        (keyup.enter)="login()">
+    </div>
+
+    <button class="btn-login" (click)="login()">
+      Sign In →
+    </button>
+
+    <div class="hint-box">
+      <p>Demo credentials:</p>
+      <p>Student: stu123 / stu123</p>
+      <p>Teacher: tch456 / tch456</p>
+      <p>Admin: adm789 / adm789</p>
+    </div>
+
+  </div>
+</div>
