@@ -58,47 +58,62 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+## Backend Setup – Node.js Authentication API
 
-##Backend Setup – Node.js Authentication API
+### 1. Create MySQL Database
 
-##Create MySQL Database
+Open MySQL and run the following commands:
 
-Open MySQL and run the following:
-
+```sql
 CREATE DATABASE node_auth;
 USE node_auth;
 
 CREATE TABLE users (
-id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(100),
-email VARCHAR(100) UNIQUE,
-password VARCHAR(255)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
 );
+```
 
-##Create Environment File
-reate a file named .env in the backend root folder.
+---
 
-Add the following:
+### 2. Create Environment File
 
+Create a file named `.env` in the **backend root folder**.
+
+Add the following configuration:
+
+```env
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=node_auth
 PORT=3000
+```
 
-Replace your_mysql_password with your MySQL password.
+Replace `your_mysql_password` with your actual **MySQL password**.
 
-##Install Dependencies
-Inside the backend folder, run:
+---
 
+### 3. Install Dependencies
+
+Inside the **backend folder**, run the following command:
+
+```bash
 npm install express mysql2 bcryptjs dotenv
+```
+
+---
+
+### 4. Package Usage
 
 These packages are used for:
 
-express → backend server
+* **express** → Backend server framework
+* **mysql2** → MySQL database connection
+* **bcryptjs** → Secure password hashing
+* **dotenv** → Manage environment variables
 
-mysql2 → MySQL database connection
 
-bcryptjs → password hashing
 
-dotenv → environment variables
