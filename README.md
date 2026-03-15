@@ -57,8 +57,11 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-#Backend Setup – Node.js Authentication API
-#Create MySQL Database
+
+
+##Backend Setup – Node.js Authentication API
+
+##Create MySQL Database
 
 Open MySQL and run the following:
 
@@ -72,7 +75,7 @@ email VARCHAR(100) UNIQUE,
 password VARCHAR(255)
 );
 
-#Create Environment File
+##Create Environment File
 reate a file named .env in the backend root folder.
 
 Add the following:
@@ -85,7 +88,7 @@ PORT=3000
 
 Replace your_mysql_password with your MySQL password.
 
-#Install Dependencies
+##Install Dependencies
 Inside the backend folder, run:
 
 npm install express mysql2 bcryptjs dotenv
