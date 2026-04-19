@@ -1,10 +1,10 @@
-const db = require("../config/db");
+const db = require("../config/db");   // ← THIS LINE WAS MISSING
 
 const User = {
 
-  createUser: (name, email, password, callback) => {
-    const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-    db.query(sql, [name, email, password], callback);
+  createUser: (name, email, password, role, callback) => {
+    const sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, password, role], callback);
   },
 
   findUserByEmail: (email, callback) => {

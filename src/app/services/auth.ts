@@ -1,50 +1,49 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-export interface User{
+export interface User {
   id: string;
   name: string;
-  role: 'Student' | 'Teacher' | 'Admin';  
-  password: string;
+  email: string;
+  role: 'Student' | 'Teacher' | 'Admin';
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
 
-  //Credentials for testing
-  private users: User[] = [
-    { id: 'stu123', name: 'Harsh', role: 'Student', password: 'stu123' },
-    { id: 'tch456', name: 'Mohan Rao', role: 'Teacher', password: 'tch456' },
-    { id: 'adm123', name: 'Admin User', role: 'Admin', password: 'adm123' },
-  ];
-  
+  private apiUrl = 'http://localhost:3000/api/auth';
   private currentUser: User | null = null;
 
-  login(id: string, password: string): boolean {
-    const user=this.users.find(
-      u=>u.id === id && u.password === password
-    );
-    if(user){
-      this.currentUser=user;
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) {}
+
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
-  logout(): void{
+  signup(name: string, email: string, password: string, role: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/signup`, { name, email, password, role });
+  }
+
+  setCurrentUser(user: User): void {
+    this.currentUser = user;
+  }
+
+  logout(): void {
     this.currentUser = null;
   }
 
-  isLoggedIn():boolean{
+  isLoggedIn(): boolean {
     return this.currentUser !== null;
   }
-  
-  getRole(): string | null{
+
+  getRole(): string | null {
     return this.currentUser ? this.currentUser.role : null;
   }
 
-  getCurrentUser(): User | null{
+  getCurrentUser(): User | null {
     return this.currentUser;
   }
-}  
+}

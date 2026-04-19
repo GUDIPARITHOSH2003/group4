@@ -7,29 +7,25 @@
       <p>Sign in to your account</p>
     </div>
 
-    <!-- Error message -->
-    <div class="error-box" *ngIf="error">
-        {{ error }}
-    </div>
+    <div class="error-box" *ngIf="error">{{ error }}</div>
 
-    <!-- Login Form
     <div class="form-group">
       <label>Role</label>
-      <select [(ngModel)]="userId" class="form-input">
-        <option value="">Select role first...</option>
-        <option value="stu123">Student</option>
-        <option value="tch456">Teacher</option>
-        <option value="adm789">Admin</option>
+      <select [(ngModel)]="role" class="form-input">
+        <option value="">Select your role</option>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Admin">Admin</option>
       </select>
-    </div> -->
+    </div>
 
     <div class="form-group">
-      <label>User ID</label>
+      <label>Email</label>
       <input
-        type="text"
-        [(ngModel)]="userId"
+        type="email"
+        [(ngModel)]="email"
         class="form-input"
-        placeholder="Enter your user ID">
+        placeholder="Enter your email">
     </div>
 
     <div class="form-group">
@@ -45,6 +41,11 @@
     <button class="btn-login" (click)="login()">
       Sign In →
     </button>
+
+    <p class="signup-link">
+      Don't have an account?
+      <a routerLink="/signup">Sign up here</a>
+    </p>
 
   </div>
 </div>

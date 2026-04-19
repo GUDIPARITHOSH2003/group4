@@ -3,12 +3,15 @@ import { Login } from './components/login/login';
 import { AccessDenied } from './components/access-denied/access-denied';
 import { Layout } from './components/layout/layout';
 import { AuthGuard } from './guards/auth-guard';
+import { Signup } from './components/signup/signup';
+
 
 export const routes: Routes = [
 
   // Public routes — no layout no guard
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: Login },
+  { path: 'signup', component: Signup },
   { path: 'access-denied', component: AccessDenied },
 
   // Protected routes — wrapped in Layout
